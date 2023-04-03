@@ -2,16 +2,23 @@
   <div class="nav">
     <template v-for = "(item,index) in proList" :key="index" >
       <div :class="{active:numindex===index}" @click="getindex(index)">
-        {{item}}  
+        <span>{{item}} </span>
       </div>
+     
     </template>
-  </div>
+    </div>
+     <h2>{{ itemhtml[numindex] }}</h2>
+  
 </template>
 
 <script>
 export default {
   props:{
     proList:{
+      type:Array,
+      default:()=>[]
+    },
+    itemhtml:{
       type:Array,
       default:()=>[]
     }
@@ -40,5 +47,9 @@ export default {
   .active{
     color:red;
     font-weight: 700;
+  }
+  .nav .active span{
+    border-bottom: 3px solid red;
+    padding:4px;
   }
 </style>
