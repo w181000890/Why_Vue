@@ -9,7 +9,23 @@
 <script>
 export default {
   name:"ShowInfos",
-  props:['name','age','height']
+  // props:['name','age','height']
+  props:{
+    name:{
+      type:String,
+      default:"张三",
+
+    },
+    age:{
+      type:[String,Number],
+      default:18,
+      require:true,
+    },
+    height:{
+      type:String,
+      default:"2"
+    }
+  }
 
 }
 </script>
