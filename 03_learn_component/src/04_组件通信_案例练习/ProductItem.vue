@@ -7,30 +7,34 @@
      
     </template>
     </div>
-     
+     <h2>{{ itemhtml[numindex] }}</h2>
   
 </template>
 
 <script>
 export default {
-  emits:['add'],
+  
   props:{
     proList:{
       type:Array,
       default:()=>[]
+    },
+    itemhtml:{
+      type:Array,
+      default:()=>[]
     }
-    
   },
   data(){
     return{
       numindex:0
     }
   },
+  emits:['add'],
   methods:{
     getindex(index){
       console.log(index)
       this.numindex=index
-      this.$emit("add", index)
+      this.$emit('add',index)
     }
   }
 }
