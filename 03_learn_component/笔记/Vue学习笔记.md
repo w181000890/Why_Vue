@@ -3396,6 +3396,16 @@ const App = {
 
 ![image-20230409224812846](./img/image-20230409224812846.png)
 
++ **多个插槽的效果**
++ + 如果一个组件中含有多个插槽
+  + 发现默认情况下每个插槽都会获取到我们插入的内容来显示
+
+![image-20230410065008966](img/image-20230410065008966.png)
+
+
+
+
+
 **App.vue**
 
 ```vue
@@ -3481,6 +3491,120 @@ const App = {
     <template v-slot:why></template>
 </nav-bar>
 ```
+
++ 具名插槽顾名思义就是给插槽起一个名字，<slot> 元素有一个特殊的 attribute：name；
++ 一个不带 name 的slot，会带有隐含的名字 default；
+
+![image-20230410065207143](img/image-20230410065207143.png)
+
+**App.vue**
+
+```vue
+<template>
+  <nav-bar>
+    <template #left>
+      <button>{{ leftText }}</button>
+    </template>
+
+    <template #center>
+      <span>内容</span>
+    </template>
+
+    <template v-slot:right>
+      <a href="#">登录</a>
+    </template>
+  </nav-bar>
+
+  <!-- nav-bar只给一个插槽传入数据 -->
+  <nav-bar>
+    <template v-slot:[position]>
+      <a href="#">注册</a>
+    </template>
+  </nav-bar>
+  <button @click=" position = 'left' ">左边</button>
+  <button @click=" position = 'center' ">中间</button>
+  <button @click=" position = 'right' ">右边</button>
+</template>
+
+<script>
+  import NavBar from './NavBar.vue'
+
+  export default {
+    components: {
+      NavBar
+    },
+    data() {
+      return {
+        position: "center",
+        leftText: "返回"
+      }
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
+**NarBar.vue**
+
+```vue
+<template>
+  <div class="nav-bar">
+    <div class="left">
+      <slot name="left">left</slot>
+    </div>
+    <div class="center">
+      <slot name="center">center</slot>
+    </div>
+    <div class="right">
+      <slot name="right">right</slot>
+    </div>
+  </div>
+
+  <div class="other">
+    <slot name="default"></slot>
+  </div>
+</template>
+
+<script>
+  export default {
+
+  }
+</script>
+
+<style scoped>
+  .nav-bar {
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .left {
+    width: 80px;
+    background-color: orange;
+  }
+
+  .center {
+    flex: 1;
+    background-color: skyblue;
+  }
+
+  .right {
+    width: 80px;
+    background-color: aquamarine;
+  }
+</style>
+
+
+```
+
+
+
+
 
 
 
