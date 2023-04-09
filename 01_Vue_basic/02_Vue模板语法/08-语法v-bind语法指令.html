@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <img v-bind:src="img" alt="">
+    <!-- <img src="../imgs/1.jfif" alt=""> -->
+    <button @click="changeImage">点击切换图片</button>
+  </div>
+  
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建app
+    const app = Vue.createApp({
+      // data:option api
+
+      data: function () {
+        return {
+          imgUrl1: "../imgs/1.jfif"
+          , imgUrl2: "../imgs/2.webp"
+          , img: "../imgs/2.webp"
+        }
+      },
+      methods:{
+        changeImage:function(){
+          // console.log(this.img)
+          this.img = this.img===this.imgUrl1? this.imgUrl2: this.imgUrl1
+          console.log(this.img)
+        }
+      }
+    })
+    //挂载app
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

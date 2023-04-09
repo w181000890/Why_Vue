@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .shopCar,
+    h2 {
+      margin: 0 auto;
+      /* text-align: center; */
+    }
+    /* button{
+      width: 4px;
+      height: 4px;
+    } */
+    th,td{
+      padding: 8px 16px;
+      text-align: center;
+    }
+    .activate{
+      background-color: grey;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <template v-if="info.length">
+      <table class="shopCar" border="1px" cellspacing="0" minwidth="20px">
+        <thead>
+          <tr>
+            <th></th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr v-for="(item,index) of info" :key="index" v-show="item.statue" :class="{activate:active==index}" @click="getindex(index)">
+            <td>{{index+1}}</td>
+            <td>《{{item.bookName}}》</td>
+            <td>{{item.publicDate}}</td>
+            <td>¥{{item.price}}</td>
+            <td>
+              <button :disabled="buttonDisabled(index)" @click="subnum(index)">-1</button>
+              {{item.num}}
+              <button @click="incrnum(index)">+1</button>
+            </td>
+            <td><button @click="deleshop(index)">移除</button></td>
+          </tr>
+        </tbody>
+      
+      </table>
+      <h2>总价:{{getTotalPrice}}</h2>
+    </template>
+    <template v-else>
+    <h2>目前没有商品</h2>
+    </template>
+    
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建app
+    const app = Vue.createApp({
+      // data:option api
+      data: function () {
+        return {
+          // totalPrice: 0,
+          info: [
+            { id: 1, bookName: "算法导论", publicDate: "2006-9", price: 85, num: 1, statue: true },
+            { id: 2, bookName: "代码大全", publicDate: "2016-8", price: 45, num: 1, statue: true },
+            { id: 3, bookName: "编程珠玑", publicDate: "2006-10", price: 43, num: 2, statue: true },
+            { id: 4, bookName: "UNIX编程艺术", publicDate: "2006-11", price: 85, num: 1, statue: true },
+            { id: 5, bookName: "数据结构", publicDate: "2006-12", price: 26, num: 1, statue: true },
+          ],
+          active:-1
+
+        }
+      },
+      // watch:{
+      //  info:{
+      //   handler(){
+      //     this.totalPrice = 0
+      //     this.i=0
+      //     for (item of this.info) {
+      //        if (item.statue) {
+      //          this.totalPrice += Number(item.price) * Number(item.num)
+      //        }
+      //       }
+      //   },
+      //   deep:true,
+      //   immediate:true
+      //  } 
+      // },
+      computed:{
+        getTotalPrice(){
+        //  totalPrice = 0
+        //   for(item of this.info){       
+        //       totalPrice += Number(item.price)*Number(item.num) 
+        //   }
+        //   return totalPrice
+        // reduce方法
+        return this.info.reduce((totalPrice,item)=>{
+          console.log("+++++",item.price*item.num)
+          return totalPrice + item.price*item.num
+        },0)
+          
+        }
+      },
+      methods:{
+        deleshop(index){
+          console.log(this.info[index])
+          this.info.splice(index,1)
+        },
+        buttonDisabled(index){
+          console.log(this.info[index].num === 1)
+          return this.info[index].num===1
+        },
+        subnum(index){
+          this.info[index].num -= 1
+        },
+        incrnum(index){
+          this.info[index].num += 1
+        },
+        getindex(index){
+          this.active = index
+        }
+      }
+    })
+    //挂载app
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

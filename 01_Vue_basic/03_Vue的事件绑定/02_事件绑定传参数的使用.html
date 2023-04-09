@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="btn1Method">{{message}}</button>
+    <!-- 有参数 -->
+    <button @click="btn2Method('why',age)">{{message}}</button>
+    <!-- 带有默认参数 -->
+    <button @click="btn3Method('why',age,$event)">{{message}}</button>
+
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建app
+    const app = Vue.createApp({
+      // data:option api
+      data: function () {
+        return {
+          message: "Hello World",
+          age:18
+        }
+      },
+      methods:{
+        btn1Method(event){
+          console.log(event)
+
+        },
+        btn2Method(why,age) {
+          console.log(why,age)
+
+        },
+        btn3Method(...event) {
+          console.log(event)
+
+        },
+
+      }
+
+    })
+    //挂载app
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

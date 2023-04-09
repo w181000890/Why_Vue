@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <select v-model="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="天津市">天津</option>
+      <option value="武汉">武汉</option>
+    </select><br>
+    <select multiple v-model="infos">
+      <option value="上海">上海</option>
+      <option value="北湖">北湖</option>
+      <option value="南湖">南湖</option>
+      <option value="东湖">东湖</option>
+      <option value="西湖">西湖</option>
+    </select>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建app
+    const app = Vue.createApp({
+      // data:option api
+      data: function () {
+        return {
+          message: "Hello World",
+          city:"上海",
+          infos:[],
+        }
+      }
+    })
+    //挂载app
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

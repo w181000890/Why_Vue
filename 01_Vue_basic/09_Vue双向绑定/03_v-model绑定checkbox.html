@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <label for="agree">
+    <input type="checkbox" id="agree" v-model="checkmessage">同意协议
+    </label>
+    <label for="habby">
+      <input type="checkbox"  id="habby" v-model="info" value="sing">唱歌
+    </label>
+    <label for="dance">
+      <input type="checkbox" id="dance" v-model="info" value="dance">跳舞
+    </label>
+    <label for="basektball">
+      <input type="checkbox" id="basektball" v-model="info" value="basektball">篮球
+    </label>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 创建app
+    const app = Vue.createApp({
+      // data:option api
+      data: function () {
+        return {
+         checkmessage:true,
+         info:[]
+        }
+      }
+    })
+    //挂载app
+    app.mount("#app")
+  </script>
+</body>
+
+</html>
