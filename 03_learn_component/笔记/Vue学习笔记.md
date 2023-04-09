@@ -3249,6 +3249,112 @@ const App = {
 
 ### 11.5. 阶段案例练习 - TabControl的封装
 
+**App.vue**
+
+```vue
+<template>
+  <div class="app">
+    <!-- 1.tab-control -->
+    <tab-control :titles="['衣服', '鞋子', '裤子']" 
+                 @tab-item-click="tabItemClick"/>
+
+    <!-- <tab-control :titles="['流行', '最新', '优选']"/> -->
+
+    <!-- 2.展示内容 -->
+    <h1>{{ pageContents[currentIndex] }}</h1>
+  </div>
+</template>
+
+<script>
+  import TabControl from './TabControl.vue'
+
+  export default {
+    components: {
+      TabControl
+    },
+    data() {
+      return {
+        pageContents: [ "衣服列表", "鞋子列表", "裤子列表" ],
+        currentIndex: 0
+      }
+    },
+    methods: {
+      tabItemClick(index) {
+        console.log("app:", index)
+        this.currentIndex = index
+      }
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
+``` vue
+<template>
+  <div class="tab-control">
+    <template v-for="(item, index) in titles" :key="item">
+      <div class="tab-control-item"
+           :class="{ active: index === currentIndex }"
+           @click="itemClick(index)">
+        <span>{{ item }}</span>
+      </div>
+    </template>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: {
+      titles: {
+        type: Array,
+        default: () => []
+      }
+    },
+    data() {
+      return {
+        currentIndex: 0
+      }
+    },
+    emits: ["tabItemClick"],
+    methods: {
+      itemClick(index) {
+        this.currentIndex = index
+        this.$emit("tabItemClick", index)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .tab-control {
+    display: flex;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .tab-control-item {
+    flex: 1;
+  }
+
+  .tab-control-item.active {
+    color: red;
+    font-weight: 700;
+  }
+
+  .tab-control-item.active span {
+    border-bottom: 3px solid red;
+    padding: 8px;
+  }
+</style>
+
+
+```
+
 
 
 
@@ -3257,13 +3363,108 @@ const App = {
 
 ### 12.1. 认识Slot的作用
 
++ **在开发中，我们会经常封装一个个可复用的组件:
+  ** +  前面我们会通过props传递给组件一些数据，让组件来进行展示;
 
+  + 但是为了让这个组件具备更强的通用性，我们不能将组件中的内容限制为固定的div、span等等这些元素;
 
+    + 比如某种情况下我们使用组件，希望组件显示的是一个按钮，某种情况下我们使用组件希望显示的是一张图片; 
 
+       我们应该让使用者可以决定某一块区域到 底存放什么内容和元素;
+
++ **举个栗子:假如我们定制一个通用的导航组件** **- NavBar
+  **  这个组件分成三块区域:左边-中间-右边，每块区域的内容是不固定;
+    左边区域可能显示一个菜单图标，也可能显示一个返回按钮，可能什么都不显示;  中间区域可能显示一个搜索框，也可能是一个列表，也可能是一个标题，等等;  右边可能是一个文字，也可能是一个图标，也可能什么都不显示;
+
+![image-20230409223906213](./img/image-20230409223906213.png)
 
 ### 12.2. Slot的基本使用和默认值(重要)
 
+**这个时候我们就可以来定义插槽****slot****:
+**  插槽的使用过程其实是抽取共性、预留不同;
+  我们会将共同的元素、内容依然在组件内进行封装;
+  同时会将不同的元素使用slot作为占位，让外部决定到底显示什么样的元素;
 
+◼ **如何使用****slot****呢?
+** Vue中将 <slot> 元素作为承载分发内容的出口;
+  在封装组件中，使用特殊的元素<slot>就可以为封装组件开启一个插槽;  该插槽插入什么内容取决于父组件如何使用;
+
+![image-20230409224048478](./img/image-20230409224048478-1051250.png)
+
++ 有时候我们希望在使用插槽时，如果**没有插入对应的内容，那么我们需要显示一个****默认的内容**:
+  + 当然这个默认的内容只会在没有提供插入的内容时，才会显示;
+
+![image-20230409224812846](./img/image-20230409224812846.png)
+
+**App.vue**
+
+```vue
+<template>
+  <div class="app">
+    <!-- 1.内容是button -->
+    <show-message title="哈哈哈">
+      <button>我是按钮元素</button>
+    </show-message>
+
+    <!-- 2.内容是超链接 -->
+    <show-message>
+      <a href="#">百度一下</a>
+    </show-message>
+
+    <!-- 3.内容是一张图片 -->
+    <show-message>
+      <img src="@/img/kobe02.png" alt="">
+    </show-message>
+
+    <!-- 4.内容没有传递 -->
+    <show-message></show-message>
+  </div>
+</template>
+
+<script>
+  import ShowMessage from './ShowMessage.vue'
+
+  export default {
+    components: {
+      ShowMessage
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
+**ShowMessage**
+
+```vue
+<template>
+  <h2>{{ title }}</h2>
+  <div class="content">
+    <slot>
+      <p>我是默认内容, 哈哈哈</p>
+    </slot>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: {
+      title: {
+        type: String,
+        default: "我是title默认值"
+      }
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
 
 
 
