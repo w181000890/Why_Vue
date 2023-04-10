@@ -3801,6 +3801,18 @@ const App = {
 
 ### 13.2. 事件总线hy-event-store
 
++ Vue3从实例中移除了$ON,$OFF，$once方法，所以我们如果希望继续使用全局事件总线，要通过第三方的库：hy-event-store
+
++ 安装
+
+  + npm install hy-event-bus
+
+  + 可以封装一个工具eventbus.js
+  + ![image-20230410122455579](img/image-20230410122455579.png)
+
+![image-20230410122607520](img/image-20230410122607520.png)
+
+* ![image-20230410122622506](img/image-20230410122622506.png)
 * 在event-bus.js中创建eventBus对象
 * 监听事件:
   * eventBus.on()
