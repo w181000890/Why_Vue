@@ -3677,6 +3677,124 @@ const App = {
 * 数据的响应式
   * computed
 
++ Provide/Inject用于非父子组件之间共享数据：
+  + 比如有一些深度嵌套的组件，子组件想要获取父组件的部分内容；
+  + 在这种情况下，如果我们仍然将props沿着组件链逐级传递下去，就会非常的麻烦；
+
++ 对于这种情况下，我们可以使用 Provide 和 Inject ：
+  + 无论层级结构有多深，父组件都可以作为其所有子组件的依赖提供者；
+  + 父组件有一个 provide 选项来提供数据；
+  + 子组件有一个 inject 选项来开始使用这些数据；
+    
+
++ 实际上，你可以将依赖注入看作是“long range props”，除了：
+  + 父组件不需要知道哪些子组件使用它 provide 的 property
+  + 子组件不需要知道 inject 的 property 来自哪里
+
+![image-20230410112033279](img/image-20230410112033279.png)
+
++  我们开发一个这样的结构：
+
+![image-20230410112455608](img/image-20230410112455608.png)
+
++ Provide 和 Inject函数写法
+
+![image-20230410112804943](img/image-20230410112804943.png)
+
++ 处理响应式数据
+
+![image-20230410112845318](img/image-20230410112845318.png)
+
+**App.vue**
+
+```vue
+<template>
+  <div class="app">
+    <home></home>
+    <h2>App: {{ message }}</h2>
+    <button @click="message = 'hello world'">修改message</button>
+  </div>
+</template>
+
+<script>
+  import { computed } from 'vue'
+  import Home from './Home.vue'
+
+  export default {
+    components: {
+      Home
+    },
+    created() {
+
+    },
+    data() {
+      return {
+        message: "Hello App"
+      }
+    },
+    // provide一般都是写成函数
+    provide() {
+      return {
+        name: "why",
+        age: 18,
+        message: computed(() => this.message)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
+**Home.vue**
+
+```vue
+<template>
+  <div class="home">
+    <home-banner></home-banner>
+  </div>
+</template>
+
+<script>
+  import HomeBanner from './HomeBanner.vue'
+
+  export default {
+    components: {
+      HomeBanner
+    }
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
+**HomeBanner.vue**
+
+```vue
+<template>
+  <div class="banner">
+    <h2>HomeBanner: {{ name }} - {{ age }} - {{message.value}}</h2>
+  </div>
+</template>
+
+<script>
+  export default {
+    inject: ["name", "age", "message"]
+  }
+</script>
+
+<style scoped>
+</style>
+
+
+```
+
 
 
 
