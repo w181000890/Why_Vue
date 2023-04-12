@@ -1,37 +1,26 @@
 <template>
   <div class="app">
-    <home></home>
-    <button @click="message='我是王军'">点击变化姓名</button>
-    <h2>{{ message }}</h2>
+   <home></home>
   </div>
   
 </template>
 
 <script>
 import Home from './Home.vue'
-import {computed} from 'vue'
+import eventBus from './utils/event-bus';
 export default {
   components:{
     Home
   },
-  data(){
-    return{
-        message:"我是王猛"
-    }
-  },
-  provide(){
-    return{
-      name:"why",
-      age:18,
-      message:computed(()=>
-        this.message 
-      )
-
-
-    }
+  created(){
+    eventBus.on("changeinfo",(name,age,height)=>{
+      console.log("监听后",name,age,height)
+    })
+  }
+  
   }
 
-}
+
 </script>
 
 <style>
