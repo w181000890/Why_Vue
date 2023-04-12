@@ -3805,7 +3805,7 @@ const App = {
 
 + 安装
 
-  + npm install hy-event-bus
+  + npm install hy-event-store
 
   + 可以封装一个工具eventbus.js
   + ![image-20230410122455579](img/image-20230410122455579.png)
