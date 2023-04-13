@@ -8,6 +8,8 @@ import { createApp } from 'vue'
 // import App from './06_组件插槽_具名插槽/App.vue'
 // import App from './07_组件通信_具名插槽/App.vue'
 // import App from './08_Provide和Inject/App.vue'
-import App from './09_事件总线/App.vue'
+// import App from './09_事件总线/App.vue'
+// import App from './10_生命周期演练/App.vue'
+import App from './11_ref获取元素组件/App.vue'
 
 createApp(App).mount('#app')
