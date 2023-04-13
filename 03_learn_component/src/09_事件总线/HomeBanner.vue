@@ -7,6 +7,11 @@
 <script>
 import eventBus from './utils/event-bus';
 export default {
+  data() {
+    return {
+      
+    }
+  },
   methods:{
     btninfo(){
       console.log("传输前")
