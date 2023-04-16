@@ -14,6 +14,14 @@ import { createApp } from 'vue'
 // import App from './12_动态组件的使用/App.vue'
 // import App from './13_keepalive的使用/App.vue'
 // import App from './14_异步组件的使用/App.vue'
-import App from './15_组件的v-model的使用/App.vue'
+// import App from './15_组件的v-model的使用/App.vue'
+import App from './16_组件混入Mixin/App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.mixin({
+  created(){
+    console.log("hello world")
+  }
+})
+
+app.mount('#app')
