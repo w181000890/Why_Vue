@@ -1,22 +1,22 @@
 <template>
   <div class="counter">
-    <h2>{{ modelValue }}</h2>
-    <button @click="changinfo(modelValue)">+1</button>
+    <h2>counter2:{{ counter }}</h2>
+    <button @click="changinfo(counter)">+1</button>
   </div>
 </template>
 
 <script>
 export default {
   props:{
-    modelValue:{
+    counter:{
       type:Number,
       default:0
     }
   },
-  emits:['update:modelValue'],
+  emits:['update:counter'],
   methods:{
     changinfo(vodelValue){
-      this.$emit('update:modelValue',vodelValue+1)
+      this.$emit('update:counter',vodelValue+1)
     }
   }
 }
