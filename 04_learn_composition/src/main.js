@@ -4,4 +4,4 @@ import { createApp } from 'vue'
 // import App from './02_Setup定义数据/App2.vue'
 import App from './03_setup其他函数/App.vue'
 
-createApp(App).mount('#app')
+createApp(App).mount('#app') 
