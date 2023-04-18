@@ -31,7 +31,7 @@ export default {
       height:1.88
     }])
     function changeName(name){
-      console.log(JSON.stringify(info1))
+      console.log(info1.toString())
       info.name = name
     }
     return {
