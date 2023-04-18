@@ -9,17 +9,19 @@
 </template>
 
 <script>
-import {reactive,ref} from 'vue'
+import {reactive,ref,readonly} from 'vue'
 export default {
   setup(){
     let info = reactive({
       name:"why",
       password:'123456'
     })
+    let roinfo = readonly(info)
     let name = ref('wm')
     let password = ref('789')
     return{
       info,
+      roinfo,
       name,
       password
     } 
