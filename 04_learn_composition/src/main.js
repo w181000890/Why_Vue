@@ -6,6 +6,8 @@ import { createApp } from 'vue'
 // import App from './04_Setup中的torefs函数/App.vue'
 // import App from './05_Setup中computed/App.vue'
 // import App from './06_setup中ref引入元素/App.vue'
-import App from './07_生命周期函数/App.vue'
+// import App from './07_生命周期函数/App.vue'
+// import App from './08_Setup-Provide-Inject/App.vue'
+import App from './09_侦听数据变化/App.vue'
 
 createApp(App).mount('#app') 
