@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 // import App from './02_Setup定义数据/App2.vue'
 // import App from './03_setup其他函数/App.vue'
 // import App from './04_Setup中的torefs函数/App.vue'
-import App from './05_Setup中computed/App.vue'
+// import App from './05_Setup中computed/App.vue'
+import App from './06_setup中ref引入元素/App.vue'
 
 createApp(App).mount('#app') 
