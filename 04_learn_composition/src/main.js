@@ -9,6 +9,8 @@ import { createApp } from 'vue'
 // import App from './07_生命周期函数/App.vue'
 // import App from './08_Setup-Provide-Inject/App.vue'
 // import App from './09_侦听数据变化/App.vue'
-import App from './09_侦听数据变化/AppWatch.vue'
+// import App from './09_侦听数据变化/AppWatch.vue'
+// import App from './10_Setuo-Hooks练习/App.vue'
+import App from './11_script_setup语法/App.vue'
 
 createApp(App).mount('#app') 
