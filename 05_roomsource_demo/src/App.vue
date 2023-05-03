@@ -1,33 +1,30 @@
 <template>
   <div class="app">
-    <area-header
-    :title="highScore.title"
-    :subtitle="highScore.subtitle"></area-header>
-    <!-- 图片列表 -->
-  <div class="item-list">
-    <template v-for="item in highScore.list" :key="item.id">
-      <div class="item-inner">
-        <div class="cover">
-          <img src="item.picture_url" alt="">
-        </div>
-      </div>
-    </template>
-    </div>
+   <room-area :high-score="highScore"></room-area>
   </div>
-  
 </template>
 
 <script setup >
-import highScore from './data/high_score.json'
-import AreaHeader from './components/AreaHeader.vue'
-console.log(highScore)
+import { ref} from 'vue'
+// import highScore from "./data/high_score.json";
+import RoomArea from './components/RoomArea.vue'
+// console.log(highScore);
 
+const highScore = ref()
+
+setTimeout(()=>{
+  import("./data/high_score.json").then(res=>{
+    highScore.value = res.default
+  })
+},1000)
 </script>
 
 <style lang="less" scoped>
-  .app{
-    width: 1024px;
-    padding: 20px;
-    margin:0 auto;
-  }
+.app {
+  width: 1032px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+  
 </style>
