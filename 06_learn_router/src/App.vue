@@ -5,7 +5,7 @@
     <router-link to="/about">关于</router-link>
     <router-link to="/user/123">用户123</router-link>
     <router-link to="/user/456">用户456</router-link>
-    <router-link to="/user1/456">用户4561</router-link>
+    <!-- <router-link to="/user1/456">用户4561</router-link> -->
     <router-view></router-view>
   </div>
 </template>
