@@ -10,7 +10,10 @@ const router = createRouter({
   routes:[
     {path:'/',redirect:'/home'},
     { path: '/home', component: Home },
-    { path: '/about', component: About }
+    { path: '/about', component: About },
+    {path:'/user/:id',component:()=>import('../views/User.vue')},
+    {path:'/:pathMatch(.*)*',
+      component:()=>import('../views/NotFound.vue')}
   ]
   
 })
