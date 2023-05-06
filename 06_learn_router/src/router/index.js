@@ -27,28 +27,14 @@ const router = createRouter({
           path:'ranking',
           component:()=>import('../views/HomeRanking.vue')
         },
-      // ]
-      // children: [
-      //   {
-      //     path: "/home",
-      //     redirect: "/home/recommend"
-      //   },
-        // {
-        //   path: "recommend", // /home/recommend
-        //   component: () => import("../views/HomeRecommend.vue")
-        // },
-        // {
-        //   path: "ranking", // /home/ranking
-        //   component: () => import("../views/HomeRanking.vue")
-        // }
       ]
     },
     { path: '/about', component: About },
     { path: '/user/:id', component: () => import('../views/User.vue') },
-    // {
-    //   path: '/:pathMatch(.*)*',
-    //   component: () => import('../views/NotFound.vue')
-    // }
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('../views/NotFound.vue')
+    }
   ]
 
 })

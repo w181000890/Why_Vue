@@ -3987,21 +3987,21 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 十八. Composition API（二）
+## 十七. Composition API（二）
 
-### 18.1. computed计算属性(重点)
-
-
-
-
-
-### 18.2. ref获取元素/组件(半个重点)
+### 17.1. computed计算属性(重点)
 
 
 
 
 
-### 18.3. 生命周期注册函数(重要)
+### 17.2. ref获取元素/组件(半个重点)
+
+
+
+
+
+### 17.3. 生命周期注册函数(重要)
 
 * beforeCreate/Created -> setup
 
@@ -4009,7 +4009,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 18.4. provide/inject
+### 17.4. provide/inject
 
 
 
@@ -4017,7 +4017,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 18.5. watch/watchEffect(半个重要)
+### 17.5. watch/watchEffect(半个重要)
 
 * watch/watchEffect区别:
   * 1.watch必须制定数据源, watchEffect自动收集依赖
@@ -4028,27 +4028,27 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 18.6. 自定义Hook的练习(思想)
+### 17.6. 自定义Hook的练习(思想)
 
-#### 18.6.1. useCounter
-
-
-
-
-
-#### 18.6.2. useTitle
+#### 17.6.1. useCounter
 
 
 
 
 
-#### 18.6.3. useScrollPosition
+#### 17.6.2. useTitle
 
 
 
 
 
-### 18.7. script setup语法糖(重要)
+#### 17.6.3. useScrollPosition
+
+
+
+
+
+### 17.7. script setup语法糖(重要)
 
 * defineProps
 * defineEmits
@@ -4056,15 +4056,15 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 十九. 案例阶段练习
+## 十八. 案例阶段练习
 
-### 19.1. 基本知识点练习
-
-
+### 18.1. 基本知识点练习
 
 
 
-### 19.2. 组件化抽取的思想(重要)
+
+
+### 18.2. 组件化抽取的思想(重要)
 
 * room-area
   * area-header
@@ -4072,13 +4072,13 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 19.3. 对于复杂数据使用computed
+### 18.3. 对于复杂数据使用computed
 
 
 
 
 
-### 19.4. 模拟网络请求
+### 18.4. 模拟网络请求
 
 
 
@@ -4086,9 +4086,9 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十. Vue-Router
+## 十九. Vue-Router
 
-### 20.1. 前端路由发展历程
+### 19.1. 前端路由发展历程
 
 * 后端路由
 * 前后端分离
@@ -4098,7 +4098,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.2. 改变URL, 页面不刷新的两种模式
+### 19.2. 改变URL, 页面不刷新的两种模式
 
 * hash模式
 * history模式
@@ -4107,7 +4107,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.3. Vue-Router的使用过程
+### 19.3. Vue-Router的使用过程
 
 * 安装:
   * npm install vue-router
@@ -4124,9 +4124,9 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.4. Vue-Router知识点补充
+### 19.4. Vue-Router知识点补充
 
-#### 20.4.1. 默认路径
+#### 19.4.1. 默认路径
 
 * path -> redirect
 
@@ -4134,7 +4134,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 20.4.2. history模式
+#### 19.4.2. history模式
 
 * createWebHistory()
 
@@ -4142,7 +4142,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 20.4.3. router-link其他属性
+#### 19.4.3. router-link其他属性
 
 * to
 * replace
@@ -4153,13 +4153,13 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 20.4.4. 路由懒加载-分包处理
+#### 19.4.4. 路由懒加载-分包处理
 
 
 
 
 
-#### 20.4.5. 其他属性
+#### 19.4.5. 其他属性
 
 * name
 * meta
@@ -4169,7 +4169,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.5. 动态路由使用
+### 19.5. 动态路由使用
 
 * path: `/user/:id`
 
@@ -4177,7 +4177,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.6. NotFound页面匹配
+### 19.6. NotFound页面匹配
 
 * path: `/:pathMatch(.*)*`
 
@@ -4185,7 +4185,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.7. 路由的嵌套使用
+### 19.7. 路由的嵌套使用
 
 * 1.在一层路由中添加 children属性:
   * { path: "recommend", component: () => import("../views/homerecomend.vue") }
@@ -4197,9 +4197,9 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 20.8. 编程式导航
+### 19.8. 编程式导航
 
-#### 20.8.1. 跳转的方式
+#### 19.8.1. 跳转的方式
 
 * push(路径)
 * push({ path/query })
@@ -4209,7 +4209,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 20.8.2. 路径的切换
+#### 19.8.2. 路径的切换
 
 * back()
 * forward()
@@ -4217,11 +4217,11 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十一. VueRouter
+## 二十. VueRouter
 
-### 21.1. 动态管理路由
+### 20.1. 动态管理路由
 
-#### 21.1.1. 什么情况下需要动态管理路由
+#### 20.1.1. 什么情况下需要动态管理路由
 
 * 前端都会开发哪些项目;
 * 后台管理系统
@@ -4230,7 +4230,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 21.1.2. 动态添加路由
+#### 20.1.2. 动态添加路由
 
 * router.addRoute({})
 * router.addRoute("name", {})
@@ -4239,16 +4239,16 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 21.1.3. 管理路由别的方法
+#### 20.1.3. 管理路由别的方法
 
 * 移除
 * router.getRoutes()
 
 
 
-### 21.2. 路由导航守卫
+### 20.2. 路由导航守卫
 
-#### 21.2.1. beforeEach
+#### 20.2.1. beforeEach
 
 * 跳转order时, 判断用户是否登录
 * 没有登录:
@@ -4260,7 +4260,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 21.2.2. 路由导航的流程解析
+#### 20.2.2. 路由导航的流程解析
 
 
 
@@ -4268,15 +4268,15 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十二. Vuex状态管理
+## 二十一. Vuex状态管理
 
-### 22.1. 理解状态管理
-
-
+### 21.1. 理解状态管理
 
 
 
-### 22.2. Vuex基本使用
+
+
+### 21.2. Vuex基本使用
 
 * 安装vuex
 * 创建store
@@ -4287,20 +4287,20 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 22.3. 核心概念一State
+### 21.3. 核心概念一State
 
-#### 22.3.1. 基本使用
+#### 21.3.1. 基本使用
 
-#### 22.3.2. 映射使用
+#### 21.3.2. 映射使用
 
 * options api
 * composition api
 
 
 
-### 22.4. 核心概念二getter
+### 21.4. 核心概念二getter
 
-#### 22.4.1. 基本使用
+#### 21.4.1. 基本使用
 
 * 直接使用
 * 引入别的getters
@@ -4310,35 +4310,35 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 22.4.2. 映射使用
+#### 21.4.2. 映射使用
 
 - options api
 - composition api
 
 
 
-### 22.5. 核心概念三Mutations
+### 21.5. 核心概念三Mutations
 
-#### 22.5.1. 重要原则
+#### 21.5.1. 重要原则
 
 * 修改state, 必须使用mutation
 
 
 
-#### 22.5.2. 基本使用
+#### 21.5.2. 基本使用
 
 * 直接使用
 * 传入参数
 
 
 
-#### 22.5.3. 映射使用
+#### 21.5.3. 映射使用
 
 
 
 
 
-#### 22.5.4. 重要原则
+#### 21.5.4. 重要原则
 
 * 不要在mutation执行异步操作, 必须同步操作
 
@@ -4346,7 +4346,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 22.6. 核心概念四Actions
+### 21.6. 核心概念四Actions
 
 
 
@@ -4354,7 +4354,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 22.7. 核心概念五Modules
+### 21.7. 核心概念五Modules
 
 
 
@@ -4362,11 +4362,11 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十三. Vuex核心知识
+## 二十二. Vuex核心知识
 
-### 23.1
+### 22.1
 
-#### 23.1.1. actions的基本使用
+#### 22.1.1. actions的基本使用
 
 * 定义action
 * dispatch派发action
@@ -4375,13 +4375,13 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 23.1.2. actions的辅助函数
+#### 22.1.2. actions的辅助函数
 
 
 
 
 
-#### 23.1.3. actions的异步操作
+#### 22.1.3. actions的异步操作
 
 * home.vue -> home.js -> actions发送请求
 
@@ -4389,15 +4389,15 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 23.1.4. action结果返回Promise(了解)
+#### 22.1.4. action结果返回Promise(了解)
 
 
 
 
 
-### 23.2. Module的使用
+### 22.2. Module的使用
 
-#### 23.2.1. module的基本使用
+#### 22.2.1. module的基本使用
 
 * 抽取到对象:
   * state
@@ -4414,7 +4414,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-#### 23.2.2. module的命名空间
+#### 22.2.2. module的命名空间
 
 * namespaced: true
 * getters["home/xxx"]
@@ -4424,15 +4424,15 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十四. Pinia的使用
+## 二十三. Pinia的使用
 
-### 24.1. Pinia介绍和Vuex的区别(面试)
-
-
+### 23.1. Pinia介绍和Vuex的区别(面试)
 
 
 
-### 24.2. Pinia的安装和基本使用
+
+
+### 23.2. Pinia的安装和基本使用
 
 * createPinia
 * app.use
@@ -4442,7 +4442,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 24.3. Pinia核心state
+### 23.3. Pinia核心state
 
 * 使用和修改 store.xxx
 * 了解:
@@ -4454,7 +4454,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 24.4. Pinia核心getters
+### 23.4. Pinia核心getters
 
 * 基本使用
 * 引入其他的getters
@@ -4465,7 +4465,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 24.5. Pinia核心Actions
+### 23.5. Pinia核心Actions
 
 * 基本使用
 * 传入参数
@@ -4476,17 +4476,17 @@ defineAsyncComponent(() => import(""))
 
 
 
-## 二十五. axios库
+## 二十四. axios库
 
-### 25.1. 为什么选择axios
-
-
+### 24.1. 为什么选择axios
 
 
 
 
 
-### 25.2. axios发送请求
+
+
+### 24.2. axios发送请求
 
 * get/post/request
 * config传入
@@ -4495,7 +4495,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 25.3. axios额外补充
+### 24.3. axios额外补充
 
 * axios.defaults.baseURL
 * axios.defaults.timeout/headers
@@ -4505,7 +4505,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 25.4. axios创建实例
+### 24.4. axios创建实例
 
 * 为什么需要创建实例
 * axios.create()
@@ -4514,7 +4514,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 25.5. axios的拦截器
+### 24.5. axios的拦截器
 
 * axios.interceptors.request/response.use
 
@@ -4522,7 +4522,7 @@ defineAsyncComponent(() => import(""))
 
 
 
-### 25.6. axios的简洁封装
+### 24.6. axios的简洁封装
 
 
 
