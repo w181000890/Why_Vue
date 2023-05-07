@@ -6,15 +6,15 @@
       <router-link to="/home/ranking">排行榜</router-link>
 
     </div>
-    <button></button>
+    <button @click="loginClick">退出登录</button>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
-export default {
-
-}
+<script setup>
+  function loginClick(){
+    localStorage.removeItem("token")
+  }
 </script>
 
 <style>

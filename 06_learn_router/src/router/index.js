@@ -32,11 +32,39 @@ const router = createRouter({
     { path: '/about', component: About },
     { path: '/user/:id', component: () => import('../views/User.vue') },
     {
+      path:'/order',
+      component:()=>import('../views/Order.vue')
+    },
+    {
+      path:'/login',
+      component:()=>import('../views/Login.vue')
+    },
+    {
       path: '/:pathMatch(.*)*',
       component: () => import('../views/NotFound.vue')
     }
   ]
 
+})
+// 动态添加路由
+let isAdmin = true
+if(isAdmin) {
+  //一级路由
+  router.addRoute({
+    path:'/admin',
+    component:()=>import('../views/Admin.vue')
+  }),
+  router.addRoute("home",{
+    path:'vip',
+    component:()=>import('../views/HomeVip.vue')
+  })
+}
+
+router.beforeEach((to,from)=>{
+  const token = localStorage.getItem('token')
+  if(to.path==='/order'&&!token){
+    return '/login'
+  }
 })
 
 export default router
