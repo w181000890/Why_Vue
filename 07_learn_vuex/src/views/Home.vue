@@ -3,6 +3,7 @@
   <h2>HOme组件计数器：{{ $store.state.counter }}</h2>
   <h2>computed当前计数：{{storeCounter}}</h2>
   <h2>Setup当前计数{{counter}}</h2>
+  <button @click="increment">+1</button>
   </div>
 </template>
 
