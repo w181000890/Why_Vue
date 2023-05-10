@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import json,requests
 import BaiMap from './components/BaiMap.vue'
 // import mapView from './components/mapView.vue';
 
