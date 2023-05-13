@@ -6,6 +6,7 @@
    
     <button @click="nameBtnClick">修改info</button>
     <button @click="increment">setup中修改计数</button>
+    
 
 
   </div>
