@@ -22,6 +22,14 @@ const store  = createStore({
     doubleCounter(state){
       return state.counter*2
     },
+    totalAge(state){
+      return state.friends.reduce((pre,cur)=>{
+        return pre+cur.age
+      },0)
+    },
+    message(state,getters){
+      return `name:${state.name} level:${state.level} friendTotalAge:${getters.totalAge}`
+    },
     getFriendById(state){
       return function(id){
         const friend = state.friends.find(item=>item.id===id)
