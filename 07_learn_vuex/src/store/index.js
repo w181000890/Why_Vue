@@ -15,8 +15,8 @@ const store  = createStore({
 
     ],
     //服务器数据
-    //banners:[],
-    // recommends:[]
+    banners:[],
+    recommends:[]
   }),
   getters:{
     doubleCounter(state){
@@ -40,8 +40,33 @@ const store  = createStore({
   mutations:{
     increment(state){
       state.counter++
+    },
+    changeName(state,payload){
+      console.log("+++++++++")
+      state.name = payload
+    },
+    incrementLevel(state){
+      state.level++
+    },
+    changInfo(state,newInfo){
+      state.level = newInfo.level
+      state.name = newInfo.name
+    },
+    changeBanners(state,banners){
+      state.banners = banners
+    },
+    changeRecommends(state,recommends){
+      state.recommends = recommends
     }
-  }
+  },
+  actions:{
+   incrementAction(context){
+    context.commit("increment")
+   },
+   changeNameAction(context,payload){
+    context.commit("changeName",payload)
+   }
+  },
 })
 
 export default store

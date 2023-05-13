@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import Home from './views/03_核心二Getters-基本使用.vue'
+import Home from './views/Home.vue'
 
 
 </script>
