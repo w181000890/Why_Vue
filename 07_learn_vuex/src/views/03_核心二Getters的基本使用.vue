@@ -1,14 +1,13 @@
 <template>
   <div class="home">
-    <h2>counter*2:{{ $store.getters.doubleCounter }}</h2>
+  
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+
 export default {
-  computed:{
-  }
+  
 }
 </script>
 
