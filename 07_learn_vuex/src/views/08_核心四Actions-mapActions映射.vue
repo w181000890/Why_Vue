@@ -1,9 +1,12 @@
 <template>
   <div class="home">
-    <h2>Home Page</h2>
-    <ul>
-      
-    </ul>
+    <h2>当前计数:{{ $store.state.counter }}</h2>
+    <h2>Store name:{{ $store.state.name }}</h2>
+    <button @click="counterBtnClick">修改计数</button>
+   
+    <button @click="nameBtnClick">修改info</button>
+    <button @click="increment">setup中修改计数</button>
+
 
   </div>
 </template>
