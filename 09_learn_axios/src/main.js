@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
 import axios from 'axios'
 import App from './App.vue'
+import hyRequest from './service'
 
 createApp(App).mount('#app')
-
-axios.request({
-  url:"http://123.207.32.32:8000/home/multidata"
+hyRequest.request({
+  url:"/lyric?id=500665346"
 }).then(res=>{
-  console.log("res",res.data)
+  console.log("res:",res)
 })
+
