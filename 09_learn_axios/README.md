@@ -1,4 +1,4 @@
-# 08_learn_pinia
+# 09_learn_axios
 
 ## Project setup
 ```

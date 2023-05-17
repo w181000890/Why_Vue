@@ -1,36 +1,37 @@
 <template>
   <div class="home">
-  <h2>HOme组件计数器：{{ $store.state.counter }}</h2>
-  <h2>computed当前计数：{{storeCounter}}</h2>
-  <h2>Setup当前计数{{counter}}</h2>
-  <button @click="increment">+1</button>
+  
+      
+    <h2>counter模块:{{ $store.state.counterM.count }}</h2>
+    <h2>counter模块getters:{{ $store.getters['counterM/doubleCount'] }}</h2>
+    <button @click="incrementCount">count模块+1</button>
+
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
-  computed:{
-    storeCounter(){
-      return this.$store.state.counter
-    }
+  methods:{
+   
   }
-}
+ 
+};
 </script>
+
+
 
 <script setup>
-  import { toRefs } from 'vue';
-  import {useStore} from 'vuex';
+import {useStore} from 'vuex'
 
-  const store  = useStore()
-  const {counter} = toRefs(store.state)
+const store = useStore()
+function incrementCount(){
+  store.dispatch("counterM/incrementCountAction")
+}
 
-  function increment(){
-    store.commit('increment')
-  }
 
 </script>
-
+ 
 
 <style>
-
 </style>
