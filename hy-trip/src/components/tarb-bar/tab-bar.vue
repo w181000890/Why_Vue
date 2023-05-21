@@ -27,7 +27,9 @@
 const tabbarData = [
   {
     text:"首页",
-    image:"@/assets/img/tabbar/tab_home.png"
+    image:"@/assets/img/tabbar/tab_home.png",
+
+    path:"/home",
   },
 ]
 </script>
