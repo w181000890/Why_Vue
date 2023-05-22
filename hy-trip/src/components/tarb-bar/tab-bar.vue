@@ -2,8 +2,11 @@
   <div class="tab-bar">
    
    <template v-for="(item,index) in tabbarData" :key="index">
-     <div class="tab-bar-item">
-      <img :src="getAssetUrl(item.image)" alt="">
+     <div class="tab-bar-item"
+     :class="{active:index===currentIndex}"
+      @click="btnActive(index,item)">
+      <img v-if="index!==currentIndex" :src="getAssetUrl(item.image)" alt="">
+      <img v-else :src="getAssetUrl(item.imageActive)" alt="">
       <span class="text">{{ item.text }}</span>
       
     </div>
@@ -12,8 +15,20 @@
 </template>
 
 <script setup>
+import router from '@/router';
 import tabbarData from '../../assets/data/tabbar'
 import {getAssetUrl} from '@/utils/load_assets'
+
+import {ref} from "vue"
+import {useRouter} from 'vue-router'
+
+const currentIndex = ref(0)
+const roter = useRouter()
+
+const btnActive=(index,item)=>{
+  currentIndex.value = index
+  router.push(item.path)
+}
 </script>
 
 <style lang="less" scoped>
@@ -31,6 +46,9 @@ import {getAssetUrl} from '@/utils/load_assets'
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &.active{
+      color:var(--primary-color)
+    }
     
 
     img{
