@@ -31,6 +31,24 @@ const tabbarData = [
     imageActive:"@@/assets/img/tabbar/tab_home_active.png",
     path:"/home",
   },
+  {
+    text:"首页",
+    image:"@/assets/img/tabbar/tab_home.png",
+    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
+    path:"/home",
+  },
+  {
+    text:"首页",
+    image:"@/assets/img/tabbar/tab_home.png",
+    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
+    path:"/home",
+  },
+  {
+    text:"首页",
+    image:"@/assets/img/tabbar/tab_home.png",
+    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
+    path:"/home",
+  },
 ]
 </script>
 
