@@ -1,55 +1,19 @@
 <template>
   <div class="tab-bar">
-    <div class="tab-bar-item">
-      <img src="@/assets/img/tabbar/tab_home.png" alt="">
-      <span class="text">首页</span>
+   
+   <template v-for="(item,index) in tabbarData" :key="index">
+     <div class="tab-bar-item">
+      <img :src="getAssetUrl(item.image)" alt="">
+      <span class="text">{{ item.text }}</span>
       
     </div>
-    <div class="tab-bar-item">
-      
-      <img src="@/assets/img/tabbar/tab_favor.png" alt="">
-      <span class="text">收藏</span>
-    </div>
-    <div class="tab-bar-item">
-      
-      <img src="@/assets/img/tabbar/tab_order.png" alt="">
-      <span class="text">订单</span>
-    </div>
-    <div class="tab-bar-item">
-      
-      <img src="@/assets/img/tabbar/tab_message.png" alt="">
-      <span class="text">消息</span>
-    </div>
-  </div>
+   </template>
+   </div>
 </template>
 
 <script setup>
-const tabbarData = [
-  {
-    text:"首页",
-    image:"@/assets/img/tabbar/tab_home.png",
-    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
-    path:"/home",
-  },
-  {
-    text:"首页",
-    image:"@/assets/img/tabbar/tab_home.png",
-    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
-    path:"/home",
-  },
-  {
-    text:"首页",
-    image:"@/assets/img/tabbar/tab_home.png",
-    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
-    path:"/home",
-  },
-  {
-    text:"首页",
-    image:"@/assets/img/tabbar/tab_home.png",
-    imageActive:"@@/assets/img/tabbar/tab_home_active.png",
-    path:"/home",
-  },
-]
+import tabbarData from '../../assets/data/tabbar'
+import {getAssetUrl} from '@/utils/load_assets'
 </script>
 
 <style lang="less" scoped>
