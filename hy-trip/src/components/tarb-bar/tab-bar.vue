@@ -1,7 +1,7 @@
 <template>
   <div class="tab-bar">
    
-   <template v-for="(item,index) in tabbarData" :key="index">
+   <!-- <template v-for="(item,index) in tabbarData" :key="index">
      <div class="tab-bar-item"
      :class="{active:index===currentIndex}"
       @click="btnActive(index,item)">
@@ -10,7 +10,14 @@
       <span class="text">{{ item.text }}</span>
       
     </div>
-   </template>
+   </template> -->
+   <van-tabbar v-model="active">
+  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="search">标签</van-tabbar-item>
+  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+</van-tabbar>
+
    </div>
 </template>
 
