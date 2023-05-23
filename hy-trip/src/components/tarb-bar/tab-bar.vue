@@ -10,11 +10,20 @@
       
     </div>
    </template> -->
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search">收藏</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">订单</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">消息</van-tabbar-item>
+    <van-tabbar v-model="currentIndex" active-color="#ff9854">
+      <template v-for="(item, index) in tabbarData" :key="index">
+        <van-tabbar-item :to="item.path">
+          <span>{{ item.text }}</span>
+          <template #icon>
+            <img
+              v-if="index !== currentIndex"
+              :src="getAssetUrl(item.image)"
+              alt=""
+            />
+            <img v-else :src="getAssetUrl(item.imageActive)" alt="" />
+          </template>
+        </van-tabbar-item>
+      </template>
     </van-tabbar>
   </div>
 </template>
