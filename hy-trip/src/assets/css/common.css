@@ -1,5 +1,7 @@
 :root{
   --primary-color:#ff9854;
+  /* --van-tabbar-item-font-size:30px; */
+  /* --van-tabbar-item-icon-size:300px !important; */
 }
 body{
   font-size:14px;

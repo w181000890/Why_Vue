@@ -47,30 +47,37 @@ const btnActive = (index, item) => {
 
 <style lang="less" scoped>
 .tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  display: flex;
-  border-top: 1px solid #f3f3f3;
-  .tab-bar-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    &.active {
-      color: var(--primary-color);
-    }
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // height: 50px;
+  // display: flex;
+  // border-top: 1px solid #f3f3f3;
+  // .tab-bar-item {
+  //   flex: 1;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   &.active {
+  //     color: var(--primary-color);
+  //   }
 
-    img {
-      width: 35px;
-      // margin-bottom: 2px;
-    }
-    .text {
-      font-size: 14px;
-    }
+  //   img {
+  //     width: 35px;
+  //     // margin-bottom: 2px;
+  //   }
+  //   .text {
+  //     font-size: 14px;
+  //   }
+  // }
+  // --van-tabbar-item-icon-size: 30px !important;
+  // .van-tabbar-item__icon img{
+  //   height: 26px;
+  // }
+  :deep(.van-tabbar-item__icon img) {
+    height: 26px;
   }
 }
 </style>
