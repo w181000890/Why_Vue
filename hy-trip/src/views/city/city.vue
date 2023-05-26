@@ -11,17 +11,16 @@
     <!-- 2.tab的切换 -->
     <!-- tabActive默认索引 -->
     <van-tabs v-model:active="tabActive" color="#ff9854">
-      <template v-for="(value,key,index) in allCity" :key="key">
-        <van-tab :title="value.title" :name="key">{{  }}</van-tab>
+      <template v-for="(value, key, index) in allCities" :key="key">
+        <van-tab :title="value.title" :name="key">{{}}</van-tab>
       </template>
     </van-tabs>
     <div class="content">
-      
+      <template v-for="(value, key, index) in allCities" :key="key">
+        <!-- <h2 v-show="tabActive===key">{{value.title}}</h2> -->
+        <city-group v-show="tabActive===key" :group-data="value"></city-group>
+      </template>
     </div>
-
-    <template v-for="item in 100" :key="item">
-      <div>哈哈哈哈哈{{ item }}</div>
-    </template>
   </div>
 </template>
 
@@ -30,18 +29,28 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import useCityStore from "@/stores/modules/city";
 import { getCityAll } from "@/services";
+import { storeToRefs } from "pinia";
+
+import CityGroup from './cpns/city-group.vue'
+
 const route = useRouter();
 const searchValue = ref("");
+const tabActive = ref();
 const onBackHome = () => {
   route.push("/home");
 };
 // 网络请求
-const allCity = ref({})
-getCityAll().then(res=>{
-  allCity.value = res.data
-})
+const allCity = ref({});
+getCityAll().then((res) => {
+  allCity.value = res.data;
+});
 
-const tabActive = ref();
+//从store中获取数据
+
+const cityStore = useCityStore();
+
+cityStore.fetchAllCitiesData();
+const { allCities } = storeToRefs(cityStore);
 </script>
 
 <style lang="less" scoped>

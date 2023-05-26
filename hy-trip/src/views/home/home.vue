@@ -5,7 +5,7 @@
       <img src="@/assets/img/home/banner.webp" alt="">
     </div>
     <div class="location">
-      <div class="city" @click="cityClick">广州</div>
+      <div class="city" @click="cityClick">{{ currentCity.cityName }}</div>
       <div class="position">
         <span class="text">
           我的位置
@@ -20,12 +20,17 @@
 import { ref } from "vue";
 import {useRouter} from 'vue-router'
 import homeNavBar from "./cpns/home-nav-bar.vue";
+import useCityStore from "@/stores/modules/city";
+import { storeToRefs } from "pinia";
 
 const router = useRouter()
 const value = ref(3);
 const cityClick= ()=>{
   router.push('/city')
 }
+
+const cityStory = useCityStore()
+const {currentCity} = storeToRefs(cityStory)
 </script>
 
 <style lang="less" scoped>

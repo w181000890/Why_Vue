@@ -9,7 +9,7 @@ const useCityStore = defineStore("city",{
     cityName:"广州"
    }
   }),
-  action:{
+  actions:{
     async fetchAllCitiesData(){
       const res = await getCityAll()
       this.allCities = res.data
