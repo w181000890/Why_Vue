@@ -9,11 +9,15 @@
       @cancel="onBackHome"
     />
     <!-- 2.tab的切换 -->
-      <!-- tabActive默认索引 -->
+    <!-- tabActive默认索引 -->
     <van-tabs v-model:active="tabActive" color="#ff9854">
-      <van-tab title="标签 1">内容 1</van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
+      <template v-for="(value,key,index) in allCity" :key="key">
+        <van-tab :title="value.title" :name="key">{{  }}</van-tab>
+      </template>
     </van-tabs>
+    <div class="content">
+      
+    </div>
 
     <template v-for="item in 100" :key="item">
       <div>哈哈哈哈哈{{ item }}</div>
@@ -24,12 +28,18 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import useCityStore from "@/stores/modules/city";
+import { getCityAll } from "@/services";
 const route = useRouter();
 const searchValue = ref("");
 const onBackHome = () => {
   route.push("/home");
 };
+// 网络请求
+const allCity = ref({})
+getCityAll().then(res=>{
+  allCity.value = res.data
+})
 
 const tabActive = ref();
 </script>
