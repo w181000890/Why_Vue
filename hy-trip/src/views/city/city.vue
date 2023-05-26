@@ -8,6 +8,8 @@
       shape="round"
       @cancel="onBackHome"
     />
+    <!-- 2.tab的切换 -->
+      <!-- tabActive默认索引 -->
     <van-tabs v-model:active="tabActive" color="#ff9854">
       <van-tab title="标签 1">内容 1</van-tab>
       <van-tab title="标签 2">内容 2</van-tab>
