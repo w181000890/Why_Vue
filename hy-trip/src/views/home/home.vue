@@ -4,6 +4,7 @@
     <div class="banner">
       <img src="@/assets/img/home/banner.webp" alt="">
     </div>
+    <home-search-bar></home-search-bar>
     
   </div>
 </template>
@@ -14,6 +15,7 @@ import {useRouter} from 'vue-router'
 import homeNavBar from "./cpns/home-nav-bar.vue";
 import useCityStore from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
+import homeSearchBar from "./cpns/home-search-bar.vue";
 
 const router = useRouter()
 const value = ref(3);
@@ -32,28 +34,5 @@ const {currentCity} = storeToRefs(cityStory)
   }
 }
 
-.location{
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 20px;
-  .city{
-    flex:1;
-  }
-  .position{
-    width: 74px;
-    display: flex;
-    align-items: center;
-    .text{
-      position: relative;
-      // top:6px;
-      font-size: 12px;
-    }
-    img{
-      margin-left: 5px;
-      width: 18px;
-      height: 18px;
-    }
-  }
-}
+
 </style>
