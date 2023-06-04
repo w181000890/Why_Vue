@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import router from "@/router";
+import { useRouter } from "vue-router";
 import useCityStore from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 
@@ -22,8 +22,9 @@ const { currentCity } = storeToRefs(cityStore);
 
 
 //点击跳转
+const router = useRouter()
 const cityClick = ()=>{
-  router
+  router.push("/city")
 } 
 </script>
 
