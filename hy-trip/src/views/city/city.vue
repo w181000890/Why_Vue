@@ -19,14 +19,14 @@
     </div>
 
     <div class="content">
-      <!-- <template v-for="(value, key, index) in allCities" :key="key">
+      <template v-for="(value, key, index) in allCities" :key="key">
         
         <city-group v-show="tabActive===key" :group-data="value"></city-group>
-      </template> -->
-
-      <template v-for="item in 100">
-        <div>哈哈哈哈哈哈{{ item }}</div>
       </template>
+
+      <!-- <template v-for="item in 100">
+        <div>哈哈哈哈哈哈{{ item }}</div>
+      </template> -->
     </div>
   </div>
 </template>

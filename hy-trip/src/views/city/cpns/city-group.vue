@@ -9,10 +9,11 @@
         </template>
       </div>
 
-      <template v-for="(group,index) in groupData.cities" :>
-      <van-index-anchor />
-          
-        
+      <template v-for="(group, index) in groupData.cities" :key="index">
+        <van-index-anchor :index="group.group" />
+        <template v-for="(city,indey) in group.cities" :key="indey">
+          <van-cell :title="city.cityName" @click="cityClick(city)"/>
+        </template>
       </template>
     </van-index-bar>
   </div>
