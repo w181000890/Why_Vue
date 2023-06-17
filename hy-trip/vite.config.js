@@ -7,7 +7,7 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig({@1223 
   plugins: [
     vue(),
     Components({
