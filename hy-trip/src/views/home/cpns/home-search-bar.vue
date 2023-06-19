@@ -25,6 +25,7 @@ import { useRouter } from "vue-router";
 import useCityStore from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
+import { formatMonthDay, getDiffDays } from "@/utils/format_date";
 
 const cityStore = useCityStore();
 
@@ -58,7 +59,9 @@ const nowDate = new Date();
 const newDate = new Date();
 newDate.setDate(nowDate.getDate() + 1);
 
-const startDate = ref()
+const startDate = ref(formatMonthDay(nowDate))
+const endDate = ref(formatMonthDay(newDate))
+const stayCount = ref(getDiffDays(nowDate,newDate))
 </script>
 
 <style lang="less" scoped>
