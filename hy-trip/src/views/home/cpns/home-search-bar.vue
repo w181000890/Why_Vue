@@ -9,11 +9,18 @@
       </div>
     </div>
     <!-- 日期范围 -->
-    <div>
+    <div calss="section">
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
           <span class="time">{{ startDate }}</span>
+        </div>
+        <div class="stay">共{{ stayCount }}晚</div>
+      </div>
+      <div class="end">
+        <div class="date">
+          <span calss="tip">离店</span>
+          <span class="time" > {{ endTime }}</span>
         </div>
       </div>
     </div>
@@ -26,6 +33,7 @@ import useCityStore from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 import { formatMonthDay, getDiffDays } from "@/utils/format_date";
+import useHomeStore from "@/stores/modules/home";
 
 const cityStore = useCityStore();
 
@@ -59,12 +67,33 @@ const nowDate = new Date();
 const newDate = new Date();
 newDate.setDate(nowDate.getDate() + 1);
 
-const startDate = ref(formatMonthDay(nowDate))
-const endDate = ref(formatMonthDay(newDate))
-const stayCount = ref(getDiffDays(nowDate,newDate))
+const startDate = ref(formatMonthDay(nowDate));
+const endDate = ref(formatMonthDay(newDate));
+const stayCount = ref(getDiffDays(nowDate, newDate));
+
+const showCalendar = ref(false);
+const onConfirm = (value) => {
+  //1.设置日期
+  const selectStartDate = value[0];
+  const selectEndDate = value[1];
+  startDate.value = formatMonthDay(selectStartDate);
+  endDate.value = formatMonthDay(selectEndDate);
+  stayCount.value = getDiffDays(selectStartDate, selectEndDate);
+  //2.隐藏日历
+  showCalendar.value = false;
+};
+
+// 热门建议
+
+const homeStore = useHomeStore();
+const { hotSuggests } = storeToRefs(homeStore);
 </script>
 
 <style lang="less" scoped>
+.search-box{
+  --van-calendar-popup-height:100%;
+
+}
 .location {
   display: flex;
   align-items: center;
@@ -87,6 +116,19 @@ const stayCount = ref(getDiffDays(nowDate,newDate))
       width: 18px;
       height: 18px;
     }
+  }
+}
+.section{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .start{
+    flex:1;
+  }
+  .end{
+    min-width: 30%;
+    padding-left: 20px;
   }
 }
 </style>
