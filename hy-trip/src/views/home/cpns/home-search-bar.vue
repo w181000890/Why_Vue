@@ -9,7 +9,7 @@
       </div>
     </div>
     <!-- 日期范围 -->
-    <div calss="section">
+    <div class="section date-range bottom-gray-line" @click="showCalendar = true">
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
@@ -20,10 +20,17 @@
       <div class="end">
         <div class="date">
           <span calss="tip">离店</span>
-          <span class="time" > {{ endTime }}</span>
+          <span class="time" > {{ endDate }}</span>
         </div>
       </div>
     </div>
+    <van-calendar v-model:show="showCalendar" 
+    type="range"
+    color="#ff9854"
+    :round="false"
+    :show-confirm = "false"
+    @confirm="onConfirm" />
+    <!-- 价格/人数选择 -->
   </div>
 </template>
 
@@ -122,13 +129,46 @@ const { hotSuggests } = storeToRefs(homeStore);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  padding:0 20px;
+  color: #999;
+  height: 44px;
 
   .start{
     flex:1;
+    display: flex;
+    height: 44px;
+    align-items: center;
   }
   .end{
     min-width: 30%;
     padding-left: 20px;
   }
+  .date{
+    display: flex;
+    flex-direction: column;
+    .tip{
+      font-size: 12px;
+      color: #999;
+    }
+    .time{
+      margin-top: 3px ;
+      color: #333;
+      font-size: 15px;
+      font-size: 500;
+    }
+  }
 }
+.date-range{
+  height: 44px;
+  .stay{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+  }
+}
+.price-counter{
+
+}
+
 </style>
