@@ -10,6 +10,7 @@ const useHomeStore = defineStore("home",{
     async fetchHotSuggestData(){
       const res = await getHomeHostSuggests()
       this.hotSuggests = res.data
+      console.log("home-hot:",this.hotSuggests)
     }
   }
 })

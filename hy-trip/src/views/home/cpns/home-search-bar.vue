@@ -9,7 +9,10 @@
       </div>
     </div>
     <!-- 日期范围 -->
-    <div class="section date-range bottom-gray-line" @click="showCalendar = true">
+    <div
+      class="section date-range bottom-gray-line"
+      @click="showCalendar = true"
+    >
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
@@ -20,16 +23,18 @@
       <div class="end">
         <div class="date">
           <span calss="tip">离店</span>
-          <span class="time" > {{ endDate }}</span>
+          <span class="time"> {{ endDate }}</span>
         </div>
       </div>
     </div>
-    <van-calendar v-model:show="showCalendar" 
-    type="range"
-    color="#ff9854"
-    :round="false"
-    :show-confirm = "false"
-    @confirm="onConfirm" />
+    <van-calendar
+      v-model:show="showCalendar"
+      type="range"
+      color="#ff9854"
+      :round="false"
+      :show-confirm="false"
+      @confirm="onConfirm"
+    />
     <!-- 价格/人数选择 -->
     <div class="section price-counter bottom-gray-line">
       <div class="start">价格不限</div>
@@ -39,7 +44,17 @@
     <div class="section keyword bottom-gray-line">关键字/位置/民宿名</div>
     <!-- 热门建议 -->
     <div class="section hot-suggests">
-      
+      <template v-for="(item, index) in hotSuggests" :key="index">
+        <div
+          class="item"
+          :style="{
+            color: item.tagText.color,
+            background: item.tagText.background.color,
+          }"
+        >
+          {{ item.tagText.text }}
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -103,13 +118,14 @@ const onConfirm = (value) => {
 // 热门建议
 
 const homeStore = useHomeStore();
+homeStore.fetchHotSuggestData()
 const { hotSuggests } = storeToRefs(homeStore);
+console.log("hotsuggests:",hotSuggests)
 </script>
 
 <style lang="less" scoped>
-.search-box{
-  --van-calendar-popup-height:100%;
-
+.search-box {
+  --van-calendar-popup-height: 100%;
 }
 .location {
   display: flex;
@@ -135,50 +151,61 @@ const { hotSuggests } = storeToRefs(homeStore);
     }
   }
 }
-.section{
+.section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding:0 20px;
+  padding: 0 20px;
   color: #999;
   height: 44px;
 
-  .start{
-    flex:1;
+  .start {
+    flex: 1;
     display: flex;
     height: 44px;
     align-items: center;
   }
-  .end{
+  .end {
     min-width: 30%;
     padding-left: 20px;
   }
-  .date{
+  .date {
     display: flex;
     flex-direction: column;
-    .tip{
+    .tip {
       font-size: 12px;
       color: #999;
     }
-    .time{
-      margin-top: 3px ;
+    .time {
+      margin-top: 3px;
       color: #333;
       font-size: 15px;
       font-size: 500;
     }
   }
 }
-.date-range{
+.date-range {
   height: 44px;
-  .stay{
+  .stay {
     flex: 1;
     text-align: center;
     font-size: 12px;
     color: #666;
   }
 }
-.price-counter{
-
+.price-counter {
+  .start {
+    border-right: 1px solid var(--line-color);
+  }
 }
-
+.hot-suggests{
+  margin:10px 0;
+  .item{
+    padding:4px 8px;
+    margin:4px;
+    border-radius:14px;
+    font-size: 12px;
+    line-height: 1;
+  }
+}
 </style>
