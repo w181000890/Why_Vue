@@ -16,14 +16,14 @@
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
-          <span class="time">{{ startDate }}</span>
+          <span class="time">{{ startDateStr }}</span>
         </div>
         <div class="stay">共{{ stayCount }}晚</div>
       </div>
       <div class="end">
         <div class="date">
           <span calss="tip">离店</span>
-          <span class="time"> {{ endDate }}</span>
+          <span class="time"> {{ endDateStr }}</span>
         </div>
       </div>
     </div>
@@ -56,14 +56,19 @@
         </div>
       </template>
     </div>
+    <!-- 搜索按钮 -->
+    <div class="section search-btn">
+      <div class="btn" @click="searchBtnClick">开始搜索</div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { useRouter } from "vue-router";
 import useCityStore from "@/stores/modules/city";
+import useMainStore from "@/stores/modules/main"
 import { storeToRefs } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { formatMonthDay, getDiffDays } from "@/utils/format_date";
 import useHomeStore from "@/stores/modules/home";
 
@@ -94,22 +99,31 @@ const positionClick = () => {
 };
 
 //日期范围的处理
+const mainStore = useMainStore()
+const {startDate,endDate} = storeToRefs(mainStore)
 
 const nowDate = new Date();
 const newDate = new Date();
 newDate.setDate(nowDate.getDate() + 1);
 
-const startDate = ref(formatMonthDay(nowDate));
-const endDate = ref(formatMonthDay(newDate));
-const stayCount = ref(getDiffDays(nowDate, newDate));
+// const startDateStr = ref(formatMonthDay(startDate.value));
+// const endDateStr = ref(formatMonthDay(endDate.value));
+
+const startDateStr = computed(()=>formatMonthDay(startDate.value));
+const endDateStr = computed(()=>formatMonthDay(endDate.value));
+const stayCount = ref(getDiffDays(startDate.value, endDate.value));
 
 const showCalendar = ref(false);
 const onConfirm = (value) => {
   //1.设置日期
   const selectStartDate = value[0];
   const selectEndDate = value[1];
-  startDate.value = formatMonthDay(selectStartDate);
-  endDate.value = formatMonthDay(selectEndDate);
+  // startDate.value = formatMonthDay(selectStartDate);
+  // endDate.value = formatMonthDay(selectEndDate);
+console.log(selectStartDate)
+    mainStore.startDate = selectStartDate;
+  mainStore.endDate = selectEndDate;
+  console.log(mainStore.startDate)
   stayCount.value = getDiffDays(selectStartDate, selectEndDate);
   //2.隐藏日历
   showCalendar.value = false;
@@ -120,7 +134,19 @@ const onConfirm = (value) => {
 const homeStore = useHomeStore();
 homeStore.fetchHotSuggestData()
 const { hotSuggests } = storeToRefs(homeStore);
-console.log("hotsuggests:",hotSuggests)
+// console.log("hotsuggests:",hotSuggests)
+
+// 开始搜索
+const searchBtnClick = ()=>{
+  router.push({
+    path:"/search",
+    query:{
+      startDate:startDate.value,
+      endDate:endDate.value,
+      currentCity:currentCity.value.cityName
+    }
+  })
+}
 </script>
 
 <style lang="less" scoped>
@@ -200,12 +226,27 @@ console.log("hotsuggests:",hotSuggests)
 }
 .hot-suggests{
   margin:10px 0;
+  height: auto;
   .item{
     padding:4px 8px;
     margin:4px;
     border-radius:14px;
     font-size: 12px;
     line-height: 1;
+  }
+}
+.search-btn{
+  .btn{
+    width: 342px;
+    height: 38px;
+    max-height: 50px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    background-image: var(--theme-linear-gradient);
   }
 }
 </style>
