@@ -5,6 +5,8 @@
       <img src="@/assets/img/home/banner.webp" alt="">
     </div>
     <home-search-bar></home-search-bar>
+    <home-categories/>
+    <home-content/>
     
   </div>
 </template>
@@ -13,6 +15,8 @@
 import { ref } from "vue";
 import {useRouter} from 'vue-router'
 import homeNavBar from "./cpns/home-nav-bar.vue";
+import homeCategories from "./cpns/home-categories.vue";
+import homeContent from "./cpns/home-content.vue";
 import useCityStore from "@/stores/modules/city";
 import { storeToRefs } from "pinia";
 import homeSearchBar from "./cpns/home-search-bar.vue";

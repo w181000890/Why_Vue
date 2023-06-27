@@ -123,7 +123,7 @@ const onConfirm = (value) => {
 console.log(selectStartDate)
     mainStore.startDate = selectStartDate;
   mainStore.endDate = selectEndDate;
-  console.log(mainStore.startDate)
+  // console.log(mainStore.startDate)
   stayCount.value = getDiffDays(selectStartDate, selectEndDate);
   //2.隐藏日历
   showCalendar.value = false;
