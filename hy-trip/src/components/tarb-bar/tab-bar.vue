@@ -16,11 +16,11 @@
           <span>{{ item.text }}</span>
           <template #icon>
             <img
-              v-if="index !== currentIndex"
-              :src="getAssetUrl(item.image)"
+              v-if="currentIndex !== index  "
+              :src="getAssetURL(item.image)"
               alt=""
             />
-            <img v-else :src="getAssetUrl(item.imageActive)" alt="" />
+            <img v-else :src="getAssetURL(item.imageActive)" alt="" />
           </template>
         </van-tabbar-item>
       </template>
@@ -29,20 +29,32 @@
 </template>
 
 <script setup>
-import router from "@/router";
 import tabbarData from "../../assets/data/tabbar";
-import { getAssetUrl } from "@/utils/load_assets";
+import { getAssetURL } from "@/utils/load_assets";
 
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
+
+const route = useRoute();
 const currentIndex = ref(0);
-const roter = useRouter();
 
-const btnActive = (index, item) => {
+console.log("+++",route.path)
+
+// const btnActive = (index, item) => {
+//   currentIndex.value = index;
+//   router.push(item.path);
+// };
+
+watch(route, (newRoute) => {
+  console.log("route:",route.path)
+  const index = tabbarData.findIndex(item => item.path === newRoute.path);
+  console.log("index:",index)
+  if (index === -1) return;
   currentIndex.value = index;
-  router.push(item.path);
-};
+});
+
+
 </script>
 
 <style lang="less" scoped>
