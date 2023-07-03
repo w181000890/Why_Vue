@@ -10,6 +10,19 @@ export default function useScroll(){
 
   const scrollListenHandler = throttle(()=>{
     clientHeight.value = document.documentElement.clientHeight
-    
+    scrollTop.value = document.documentElement.scrollTop
+    scrollHeight.value = document.documentElement.scrollHeight
+    if(clientHeight.value+scrollTop.value>=scrollHeight.value){
+      console.log("滚动到底部了")
+      isReachBottom.value = true
+    }
   },100)
+
+  onMounted(()=>{
+    window.addEventListener("scroll",scrollListenHandler)
+  })
+  onUnmounted(()=>{
+    window.removeEventListener("scroll",scrollListenHandler)
+  })
+  return {isReachBottom,clientHeight,scrollTop,scrollHeight}
 }
