@@ -65,6 +65,16 @@ const isShowSearchBar = computed(()=>{
     width: 100%;
   }
 }
+.search-bar{
+  position:fixed;
+  z-index:9;
+  top:0;
+  left:0;
+  right:0;
+  height: 45px;
+  padding: 16px 16px 10px;
+  background-color: #fff;
+}
 
 
 </style>
