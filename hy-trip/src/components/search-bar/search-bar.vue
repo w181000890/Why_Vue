@@ -5,6 +5,16 @@
         <div class="name">住</div>
         <div class="date">{{startDateStr}}</div>
       </div>
+      <div class="item end">
+        <div class="name">离</div>
+        <div class="date">{{endDateStr}}</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="keyword">关键字/位置/民宿</div>
+    </div>
+    <div class="right">
+      <i class="icon-search"></i>
     </div>
   </div>
 </template>

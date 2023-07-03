@@ -6,7 +6,7 @@
     </div>
     <home-search-bar></home-search-bar>
     <home-categories/>
-    <div class="search-bar" v-if="true">
+    <div class="search-bar" v-if="isShowSearchBar">
       <search-bar :start-date="'09.19'" :end_date = "'09.20'">
       </search-bar>
     </div>
