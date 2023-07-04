@@ -43,9 +43,11 @@ const homeStore = useHomeStore()
 
 const {isReachBottom,scrollTop} = useScroll()
 watch(isReachBottom,(newValue)=>{
-  homeStore.fetchHotSuggestData().then(()=>{
+  if(newValue){
+    homeStore.fetchHouselistData().then(()=>{
     isReachBottom.value = false
   })
+  }
 })
 
 
