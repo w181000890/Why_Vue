@@ -8,6 +8,10 @@
   @click-left="onClickLeft"
 />
 
+<div class="main" v-if="mainPart" v-memo="[mainPart]">
+ <detail-swipe :swipe-data="mainPart.topMo"></detail-swipe>
+</div>
+
   </div>
 </template>
 
@@ -15,6 +19,8 @@
 import { useRoute, useRouter } from "vue-router";
 import {getDetailInfos} from "@/services"
 import { ref,computed } from "vue";
+
+import DetailSwipe from "./cpns/detail_01-swipe.vue"
 
   const router = useRouter()
   const route = useRoute()
@@ -31,6 +37,27 @@ import { ref,computed } from "vue";
   const onClickLeft=()=>{
     router.back()
   }
+
+const sectionEls = ref({})
+const names = computed(()=>{
+  return Object.keys(sectionEls.value)
+})
+
+const tabClick = (index)=>{
+  const key = Object.keys(sectionEls.value)[index]
+  const el = sectionEls.value[key]
+  let instance = el.offsetTop
+  if(index !==0){
+    instance = instance - 44
+
+  }
+  detailRef.value.scrollTo({
+    top:instance,
+    behavior:"smooth"
+  })
+}
+
+
 </script>
 
 <style lang="less" scoped>
