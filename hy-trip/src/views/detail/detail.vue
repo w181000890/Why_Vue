@@ -10,6 +10,7 @@
 
 <div class="main" v-if="mainPart" v-memo="[mainPart]">
  <detail-swipe :swipe-data="mainPart.topModule.housePicture.housePics"></detail-swipe>
+  <
 </div>
 
   </div>
