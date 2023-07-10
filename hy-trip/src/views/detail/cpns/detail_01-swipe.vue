@@ -30,6 +30,7 @@
     }
     valueArray.push(item)
   }
+  const nameReg = /【（）】/
 </script>
 
 <style lang="less" scoped>
