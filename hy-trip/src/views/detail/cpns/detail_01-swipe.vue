@@ -2,8 +2,6 @@
   <div class="swipe">
     <van-swipe class="swipe-list" :autoplay="3000" indicator-color="white">
       <template v-for="(item,index) in swipeDate" :key="index">
-        <van-swipe-item>1</van-swipe-item>
-        <van-swipe-item>2</van-swipe-item>
       </template>
          
     </van-swipe>
