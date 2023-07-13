@@ -22,6 +22,9 @@
         :ref="getSectionRef"
         :house-facility="mainPart.dynamicModule.facilityModule.houseFacility"
       />
+      <detail-landlord name="房东" :ref="getSectionRef"
+      :landlord="mainPart.dynamicModule.landlordModule"
+      ></detail-landlord>
     </div>
   </div>
 </template>
