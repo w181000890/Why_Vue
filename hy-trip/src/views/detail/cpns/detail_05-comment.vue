@@ -11,8 +11,21 @@
             <div class="info">
               <div class="title">{{ comment.scoreTitle }}</div>
               <div class="count">{{ comment.totalCount }}条评论</div>
+              <div class="star">
+                <van-rate v-model="comment.overall" color="#ff9645" size="12" readonly allow-half></van-rate>
+              </div>
             </div>
           </div>
+          <div class="right">
+            <template v-for="(item,index) in comment.subScores" :key="item">
+              <span class="item">{{ item }}</span>     
+            </template>
+          </div>
+        </div>
+        <div class="tags">
+          <template>
+           
+          </template>
         </div>
       </div>
     </detail-section>
