@@ -23,9 +23,15 @@
           </div>
         </div>
         <div class="tags">
-          <template>
-           
+          <template v-for="(item,index) in comment.commentTagVo" :key="index">
+            <span class="item"
+            :style="{color:item.color,background:item.backgroundColor}">
+            {{ item.text }}
+          </span>
           </template>
+        </div>
+        <div class="content">
+          
         </div>
       </div>
     </detail-section>
