@@ -31,7 +31,18 @@
           </template>
         </div>
         <div class="content">
-          
+          <div class="user">
+            <div class="avatar">
+              <img :src="comment.comment.userAvatars" alt="">
+            </div>
+            <div class="profile">
+              <div class="name">{{ comment.comment.userName }}</div>
+              <div class="date">{{ comment.comment.checkInDate }}</div>
+            </div>
+          </div>
+          <div class="text">
+            {{ comment.comment.commentDetail }}
+          </div>
         </div>
       </div>
     </detail-section>
@@ -49,5 +60,99 @@
 </script>
 
 <style lang="less" scoped>
+  .comment-inner{
+    padding:10px 0;
+    .header{
+      display: flex;
+      .left{
+        display: flex;
+        align-items: center;
+        .score{
+          width: 65px;
+          height:100%;
+          color: #333;
+          position:relative;
+          font-size: 600;
+          .text{
+            font-size: 48px;
+            position: relative;
+            
+            z-index:9;
+          }
+          .line{
+            width: 66px;
+            height: 6px;
+            background: linear-gradient(90deg, #fa8c1d, #fcaf3f);
+            border-radius: 3px;
+            position: absolute;
+            bottom: 6px;
+            z-index: 5;
+            margin-top: 10px;
+          }
+        }
+        .info{
+          margin-left: 19px;
+          font-size: 12px;
+          color: #333;
+          .count{
+            margin: 3px 0;
+            color: #999;
+          }
+        }
+      }
 
+      .right{
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        justify-content: flex-end;
+        .item{
+          margin-left: 5px;
+          font-size: 12px;
+          color: #666;
+        }
+      }
+    }
+    .tags{
+      display: flex;
+      margin: 10px 0;
+      flex-wrap: wrap;
+      .item{
+        padding: 3px 5px;
+        margin-right: 8px;
+        margin-top: 5px;
+        border-radius: 8px;
+        font-size: 12px;
+      }
+    }
+    .content{
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f7f9fb;
+      .user{
+        display: flex;
+        .avatar{
+          img{
+            width: 32px;
+            height: 32px;
+            border-radius: 50px;
+          }
+        }
+        .profile{
+          margin-left:8px;
+          .date{
+            margin-top: 3px;
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+      .text{
+        font-size: 12px;
+        line-height: 16px;
+        color: #333;
+        margin: 16px;
+      }
+    }
+  }
 </style>
