@@ -4,14 +4,16 @@
       <div class="tab-control-item"
       :class="{active:index===currentIndex}"
       @click="itemClick(index)"
-      >{{ item }}</div>
+      >
+    <span>{{ item }}</span>
+    </div>
     </template>
   </div>
 </template>
 
 <script >
   export default{
-    peops:{
+    props:{
       titles:{
         type:Array,
       default:()=>[]
@@ -40,7 +42,8 @@
   .tab-control{
     display: flex;
     height: 44px;
-    line-height: center;
+    line-height: 44px;
+    text-align: center;
     background: #fff;
   }
   .tab-control-item{
@@ -48,7 +51,7 @@
   }
   .tab-control-item.active{
     color: var(--primary-color);
-    font-size: 700;
+    font-weight: 700;
   }
   .tab-control-item.active span{
     border-bottom: 3px solid var(--primary-color);
