@@ -46,6 +46,7 @@
         </div>
       </div>
     </detail-section>
+    
   </div>
 </template>
 
